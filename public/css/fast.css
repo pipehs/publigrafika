@@ -1,0 +1,57 @@
+@import url(https://fonts.googleapis.com/css?family=Sofia);
+#contenedor {
+  margin: 0 auto;
+}
+.borde 
+    { 
+        color: #000000;
+       /* background-color:#f0f0f0;*/
+        border: #000000;
+        border-style: solid;
+        border-top-width: 2px;
+        border-right-width: 2px;
+        border-bottom-width: 2px;
+        border-left-width: 2px
+    }
+    .borde_chico
+    { 
+         border: #000000;
+        border-style: double;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px
+    }
+
+#td_header_titulo
+{
+    font-family: 'Sofia', cursive;
+    width: 200px;
+    font-size: 20px;
+    font-weight: bold;
+}
+#td_header_separador
+{
+    width: 200px;
+}
+#td_header_numero
+{
+    width: 300px;
+    text-align: center;
+}
+.br
+{
+    height: 40px;
+}
+.br_chico
+{
+    height: 20px;
+}
+#descripcion
+{
+    text-align: justify;
+}
+#fecha_generacion_documento
+{
+    text-align: right;
+}

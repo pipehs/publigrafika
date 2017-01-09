@@ -1,0 +1,78 @@
+*
+{
+    font-size: 14px;
+}
+.borde 
+    { 
+        color: #000000;
+        border: #000000;
+        border-style: solid;
+        border-top-width: 1px;
+        border-right-width: 2px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        float:left;
+        font-size: 14px;
+    }
+    .cuadro_chico 
+    { 
+        color: #000000;
+        border: #000000;
+        border-style: solid;
+        border-top-width: 1px;
+        border-right-width: 2px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        width: 25px;
+        height: 25px;
+        float:left;
+        font-size: 14px;
+    }
+.izq
+{
+    text-align: left;
+}
+.derecha
+{
+    text-align: right;
+}
+.columna1 td
+{
+    width: 80px;
+    font-size: 14px;
+}
+.columna2 td
+{
+    width: 200px;
+    font-size: 14px;
+}
+.columna3 td
+{
+    width: auto;
+    font-size: 14px;
+}
+.columna_100
+{
+    width: 200px;
+}
+.separador50
+{
+    width: auto;
+    height: 50px;
+}
+.separador25
+{
+    width: auto;
+    height: 25px;
+}
+.separador_negro
+{
+    width: auto;
+    height: 20px;
+    background-color: #000000;
+}
+table
+{
+    font-size: 14px;
+}
+  

@@ -1,0 +1,268 @@
+@charset 'utf-8';
+
+body {
+	background: url('/img/backend-bg.jpg') top left repeat-x;
+}
+table thead th {
+	background-color: #ff0000;
+	color: #FFF;
+}
+.hidden {
+	display: none;
+}
+.admin-menu {
+	margin-bottom: 0;
+}
+.admin-menu .navbar-inner {
+	border-radius: 0 0 4px 4px;
+	border: 0;
+	background-color: #ff0000;
+	background-image: none;
+	box-shadow: none;
+}
+.navbar-inner {
+	border-radius: 0 0 4px 4px;
+	border: 0;
+	background-color: #ff0000;
+	background-image: none;
+	box-shadow: none;
+}
+table.indice {
+	margin-top: 15px;
+}
+.header {
+    
+	background-color: #FFFFFF;
+	height: 110px;
+}
+.header .logo {
+	float: left;
+	margin: 5px 55px;
+	width: 274px;
+	height: 100px;
+	display:block;
+	overflow: hidden;
+/*	text-indent: -9999px;
+	background: url('http://queimel.org/altomaipo/backend/public/images/logo_am.jpg') no-repeat left top;*/
+}
+.saludo
+{
+  
+   float: left;
+   position:relative;
+   
+}
+#contenedor {
+	background-color: #FFF;
+}
+#contenidos {
+	padding: 20px;
+	background: url('/img/backend-bg-contenidos.jpg') top left repeat-x
+}
+#contenidos .page-header {
+	border-bottom: 1px solid #DDD;
+	margin: 10px 0 20px;
+	padding-bottom: 5px;
+}
+
+#contenidos .page-header h3 {
+	margin: 0;
+}
+#contenidos .form-horizontal .control-label {
+	width: 230px;
+}
+
+#contenidos .form-horizontal .controls {
+	margin-left: 250px;
+	*margin-left:0px;
+}
+#contenidos .form-actions {
+    padding-left: 250px;
+}
+
+#contenidos .dl-horizontal dt {
+	width: 230px;
+	margin-bottom: 2px;
+}
+#contenidos .dl-horizontal dd {
+    margin-left: 250px;
+	margin-bottom: 2px;
+}
+
+.nav > li > a:hover {
+	background-color: #26759D;
+}
+
+#desde_check, #hasta_check {
+	margin-top: -2px;
+}
+
+.ui-widget {
+	font-size: 12px !important;
+}
+.ui-widget select {
+	height: 20px !important;
+	padding: 0 0 0 6px !important;
+}
+.control-nutricion{
+	padding:4px 2px;
+}
+.control-nutricion:hover{
+	background:#ececec !important;
+}
+.control-nutricion label{
+	margin-left:5px;
+	*margin-left:2px;
+	margin-right:2px;
+	*margin-right:1px;
+}
+.control-nutricion input,.control-nutricion label{
+	display:inline-block;
+}
+#wrapper_medias{
+	padding:0px;
+}
+#menu_tipo_medias{
+	overflow:auto;
+	height:340px;
+	background:#ddd;
+}
+ul.tipos{
+	list-style:none;
+	margin:2px 2px  0 8px;
+}
+ul.tipos li a:hover{
+	text-decoration:none;
+}
+#tipos_multimedia ul{
+	list-style:none;
+	margin-left:5px;
+}
+#tipos_multimedia ul li a,#tipos_multimedia ul li a:hover{
+	/*text-decoration:none;*/
+	color:#2FA4E7;
+}
+#meidas{
+	padding:10px;
+	background: #DDD;height:360px;overflow:auto;
+}
+.meidas .label{
+
+}
+.multimedias{
+	margin:2px 3px;
+	cursor:pointer;
+	display:inline-block;
+}
+.imagenmultimedia{
+	display:none;
+
+}
+#previewImagen{
+	display:none;
+	position:absolute;
+	text-align:center;
+	*margin-top:-100px;
+	background:#fff;
+	padding:0 10px 10px 10px;
+}
+#previewImagen img{
+	max-width:100px;
+	max-height:100px;
+	text-align:center;
+}
+.quitarMedia{
+	cursor:pointer;
+}
+#content_labels{
+	max-width:550px;
+}
+#content_labels .label{
+	display:inline-block;
+}
+a.active{
+	font-weight:bold;
+}
+.thumb_media{
+	height:150px;
+	overflow:hidden;
+}
+.thumb_media img{
+	width:150px;
+	height:100px;
+}
+.radio_buttons {
+	float: left;
+	margin-right: 10px;
+}
+.radio_buttons_colors {
+	border: 1px solid #CCCCCC;
+	width: 25px;
+	height: 18px;
+	float: left;
+}
+.crop-content{
+	border-style: solid;
+    border-width: 3px;
+    height: 100%;
+    overflow: auto;
+    width: 1300px;
+	background-color:white;
+	padding:5px;
+	position: relative;
+	margin-bottom:10px;
+
+}
+.crop-title{ 
+	color: #317EAC;
+    font-family: 'Telex',sans-serif;
+    font-weight: bold;
+    line-height: 1;
+    margin: 10px 0;
+    text-rendering: optimizelegibility;
+
+}
+.crop-btn{
+	background-color: #FFFFFF;
+    background-image: linear-gradient(#FFFFFF, #FFFFFF 5%, #FFFFFF);
+    background-repeat: no-repeat;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+	color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 0;
+    padding: 4px 14px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    vertical-align: middle;
+	border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+}
+#contenido,#contenido2,#contenido3 
+{
+
+	width:570px;
+	height:380px;				
+}
+#contenido4,#contenido5,#contenido6
+{
+
+	width:300px;
+	height:250px;				
+}
+.error_js{ color:#ff0000;}
+.error{ color:#ff0000;}
+.descripcion_consejos{
+
+}
+
+
+a.aes{
+	width: 150px;
+	height: 60px;
+	display:block;
+	text-indent: -9999px;
+	margin: 0 auto;
+	background: url('http://queimel.org/altomaipo/backend/public/images/logo_aes.png') no-repeat left top;
+}
