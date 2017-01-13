@@ -26,4 +26,12 @@ class CotizacionesCorrugado extends Model {
 				->get();
 	}
 
+	public static function getCantidad($cotizacion_id)
+	{
+		return DB::table('pubcotizacionescorrugado')
+				->where('id','=',$cotizacion_id)
+				->select('cantidad_id')
+				->first();
+	}
+
 }

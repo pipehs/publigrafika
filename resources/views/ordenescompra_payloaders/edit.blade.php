@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', 'Órdenes de compra corrugado')
+@section('title', 'Cotizaciones payloaders')
 
 @section('content')
 
@@ -11,12 +11,12 @@
   </div>
 @endif
 
-A continuación podrá agregar y/o modificar la informaci&oacute;n ingresada a trav&eacute;s de la orden de compra, o cerrar la misma.
+Ingrese toda la informaci&oacute;n de la solicitud de cotizaci&oacute;n.
 <hr>
 <div class="row">
 <div class="col-sm-8 col-m-6">
-{!!Form::model($cotizacion,['route'=>['ordenescompra_corrugado.update',$cotizacion->id],'method'=>'PUT','class'=>'form-horizontal'])!!}
-	@include('ordenescompra_corrugados.form')
+{!!Form::model($cotizacion,['route'=>['ordenescompra_payloaders.update',$cotizacion->id],'method'=>'PUT','class'=>'form-horizontal'])!!}
+	@include('ordenescompra_payloaders.form')
 {!!Form::close()!!}
 </div>
 <div class="col-sm-4 col-m-6">

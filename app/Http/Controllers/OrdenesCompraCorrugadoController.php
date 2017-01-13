@@ -94,12 +94,6 @@ class OrdenesCompraCorrugadoController extends Controller {
 			//obtenemos nombre de cliente
 			$client = \App\Cliente::getClient($c['cliente_id']);
 
-			//obtenemos precio segun cantidad
-			$precio = \App\Corrugado::getPrecio($c['cantidad_id'],$c['corrugado_id']);
-
-			//obtenemos cantidad
-			$cant = \App\Cantidad::getCantidad($c['cantidad_id']);
-
 			//obtenemos nombre
 			$nombre = \App\Corrugado::getName($c['corrugado_id']);
 
@@ -117,9 +111,9 @@ class OrdenesCompraCorrugadoController extends Controller {
 				'created_at' => $created,
 				'fecha_entrega' => $entrega,
 				'nombre' => $nombre,
-				'cantidad' => $cant,
+				'cantidad' => $c['cantidad'],
 				'cliente' => $client,
-				'precio' => $precio,
+				'precio' => $c['precio'],
 				'comentarios' => $c['comentarios'],
 				'estado' => $estado,
 				'estado_origin' => $c['estado'],
@@ -141,17 +135,21 @@ class OrdenesCompraCorrugadoController extends Controller {
 	{
 		$cotizacion = \App\CotizacionesCorrugado::find($id);
 
+		//obtenemos precio segun cantidad
+		$cotizacion->precio = \App\Corrugado::getPrecio($cotizacion->cantidad_id,$cotizacion->corrugado_id);
+
+		//obtenemos cantidad
+		$cotizacion->cantidad = \App\Cantidad::getCantidad($cotizacion->cantidad_id);
+
 		$clientes = \App\Cliente::listClientes();
 
 		$corrugados = \App\Corrugado::listCorrugados();
-
-		$cantidades = \App\Cantidad::listCantidades();
 
 		$vendedores = \App\User::listVendedores();
 
 		$formas_pago = \App\FormaPago::listFormas();
 
-		return view('ordenescompra_corrugados.create',['cotizacion' => $cotizacion, 'clientes'=>$clientes,'corrugados'=>$corrugados,'cantidades'=>$cantidades,'formas_pago' => $formas_pago, 'vendedores' => $vendedores]);
+		return view('ordenescompra_corrugados.create',['cotizacion' => $cotizacion, 'clientes'=>$clientes,'corrugados'=>$corrugados,'formas_pago' => $formas_pago, 'vendedores' => $vendedores]);
 	}
 
 	/**
@@ -177,19 +175,46 @@ class OrdenesCompraCorrugadoController extends Controller {
 					$comentarios = NULL;
 				}
 				
-				\App\OrdenesCompraCorrugado::create([
-							'cotizacion_id' => $GLOBALS['cotizacion_id'],
-		                    'cliente_id' => $_POST['cliente_id'],
-		                    'corrugado_id' => $_POST['corrugado_id'],
-		                    'cantidad_id' => $_POST['cantidad_id'],
-		                    'vendedor_id' => $_POST['vendedor_id'],
-		                    'forma_pago_id' => $_POST['forma_pago_id'],
-		                    'fecha_entrega' => $_POST['fecha_entrega'],
-		                    'estado' => 1,
-		                    'comentarios' => $comentarios,
-		                ]);
+				if (isset($_POST['submit2'])) //se está cerrando la orden, por lo que se cierra la orden y la cotización (por si acaso)
+	            {
+					\App\OrdenesCompraCorrugado::create([
+								'cotizacion_id' => $GLOBALS['cotizacion_id'],
+			                    'cliente_id' => $_POST['cliente_id'],
+			                    'corrugado_id' => $_POST['corrugado_id'],
+			                    'cantidad' => $_POST['cantidad'],
+			                    'precio' => $_POST['precio'],
+			                    'vendedor_id' => $_POST['vendedor_id'],
+			                    'forma_pago_id' => $_POST['forma_pago_id'],
+			                    'fecha_entrega' => $_POST['fecha_entrega'],
+			                    'estado' => 2,
+			                    'comentarios' => $comentarios,
+			                ]);
 
-				Session::flash('message','Orden de compra guardada correctamente');
+					//obtenemos cotización y actualizamos estado
+	            	$cotizacion = \App\CotizacionesCorrugado::find($GLOBALS['cotizacion_id']);
+	            	$cotizacion->estado = 2;
+	            	$cotizacion->save();
+					Session::flash('message','Orden de compra guardada y cerrada correctamente');
+				}
+				else
+				{
+					\App\OrdenesCompraCorrugado::create([
+								'cotizacion_id' => $GLOBALS['cotizacion_id'],
+			                    'cliente_id' => $_POST['cliente_id'],
+			                    'corrugado_id' => $_POST['corrugado_id'],
+			                    'cantidad' => $_POST['cantidad'],
+			                    'precio' => $_POST['precio'],
+			                    'vendedor_id' => $_POST['vendedor_id'],
+			                    'forma_pago_id' => $_POST['forma_pago_id'],
+			                    'fecha_entrega' => $_POST['fecha_entrega'],
+			                    'estado' => 1,
+			                    'comentarios' => $comentarios,
+			                ]);
+
+					Session::flash('message','Orden de compra guardada correctamente');
+				}
+
+				
 		});
 
 		
@@ -221,13 +246,20 @@ class OrdenesCompraCorrugadoController extends Controller {
 
 		$corrugados = \App\Corrugado::listCorrugados();
 
-		$cantidades = \App\Cantidad::listCantidades();
+		//obtenemos id cantidad original
+		$c = \App\CotizacionesCorrugado::getCantidad($orden->cotizacion_id);
+
+		//obtenemos precio segun cantidad original
+		$precio = \App\Corrugado::getPrecio($c->cantidad_id,$orden->corrugado_id);
+
+		//obtenemos cantidad original
+		$cantidad = \App\Cantidad::getCantidad($c->cantidad_id);
 
 		$vendedores = \App\User::listVendedores();
 
 		$formas_pago = \App\FormaPago::listFormas();
 
-		return view('ordenescompra_corrugados.edit',['cotizacion' => $orden, 'clientes'=>$clientes,'corrugados'=>$corrugados,'cantidades'=>$cantidades,'formas_pago' => $formas_pago, 'vendedores' => $vendedores]);
+		return view('ordenescompra_corrugados.edit',['cotizacion' => $orden, 'clientes'=>$clientes,'corrugados'=>$corrugados,'cantidad'=>$cantidad,'precio'=>$precio,'formas_pago' => $formas_pago, 'vendedores' => $vendedores]);
 	}
 
 	/**
@@ -253,21 +285,50 @@ class OrdenesCompraCorrugadoController extends Controller {
 	            $orden_act->cliente_id = $_POST['cliente_id'];
 	            $orden_act->vendedor_id = $_POST['vendedor_id'];
 	            $orden_act->corrugado_id = $_POST['corrugado_id'];
-	            $orden_act->cantidad_id = $_POST['cantidad_id'];
-	            $orden_act->forma_pago_id = $_POST['forma_pago_id'];
+	            $orden_act->cantidad = $_POST['cantidad'];
+	            $orden_act->precio = $_POST['precio'];
+ 	            $orden_act->forma_pago_id = $_POST['forma_pago_id'];
 
 	            if (isset($_POST['fecha_entrega']) && $_POST['fecha_entrega'] != '')
 	            {
 	                $orden_act->fecha_entrega = $_POST['fecha_entrega'];
 	            }
 
+	            if (isset($_POST['submit2'])) //se está cerrando la orden, por lo que se cierra la orden y la cotización (por si acaso)
+	            {
+	            	$orden_act->estado = 2;
+
+	            	//obtenemos cotización y actualizamos estado
+	            	$cotizacion = \App\CotizacionesCorrugado::find($orden_act->cotizacion_id);
+
+	            	$cotizacion->estado = 2;
+	            	$cotizacion->save();
+	            	Session::flash('message','Orden de compra guardada y cerrada correctamente');
+	            }
+	            else
+	            {
+	            	Session::flash('message','Orden de compra guardada correctamente');
+	            }
+
 	            $orden_act->save();
 
-	            Session::flash('message','Orden de compra guardada correctamente');
+	            
 		});
 
 		return Redirect::to('ordenescompra_corrugado');
 
+	}
+
+	public function getPdf($id)
+	{
+		$cotizacion = \App\OrdenesCompraCorrugado::find($id);
+
+		$cuerpo = corrugadoPdf($cotizacion,'Cotización',$id,1);
+        
+        $pdf = \App::make('dompdf.wrapper');
+        $nombre = "Cotización de Cliente ".$id." ".date("Y-m-d H:i:s").".pdf";
+        $pdf->loadHTML($cuerpo);
+        return $pdf->stream();
 	}
 
 	/**

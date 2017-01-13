@@ -238,27 +238,31 @@ Route::put('ordenescompra_corrugado.update.{id}', [
 	'as' => 'ordenescompra_corrugado.update', 'uses' => 'OrdenesCompraCorrugadoController@update'
 ]);
 
+Route::get('ordenescompra_corrugado.pdf.{id}', [
+	'as' => 'ordenescompra_corrugado.pdf', 'uses' => 'OrdenesCompraCorrugadoController@getPdf'
+]);
+
 //ordenes de compra de payloaders
-Route::get('ordenescompra_payloader', [
-	'as' => 'ordenescompra_payloader', 'uses' => 'OrdenesCompraPayloaderController@index'
+Route::get('ordenescompra_payloaders', [
+	'as' => 'ordenescompra_payloaders', 'uses' => 'OrdenesCompraPayloaderController@index'
 ]);
 
-Route::get('ordenescompra_payloader.create.{cotizacion_id}', [
-	'as' => 'ordenescompra_payloader.create', 'uses' => 'OrdenesCompraPayloaderController@create'
+Route::get('ordenescompra_payloaders.create.{cotizacion_id}', [
+	'as' => 'ordenescompra_payloaders.create', 'uses' => 'OrdenesCompraPayloaderController@create'
 ]);
 
-Route::post('ordenescompra_payloader.store.{cotizacion_id}', [
-	'as' => 'ordenescompra_payloader.store', 'uses' => 'OrdenesCompraPayloaderController@store'
+Route::post('ordenescompra_payloaders.store.{cotizacion_id}', [
+	'as' => 'ordenescompra_payloaders.store', 'uses' => 'OrdenesCompraPayloaderController@store'
 ]);
 
-Route::get('ordenescompra_payloader.pdf.{id}', [
-	'as' => 'ordenescompra_payloader.pdf', 'uses' => 'OrdenesCompraPayloaderController@getPdf'
+Route::get('ordenescompra_payloaders.pdf.{id}', [
+	'as' => 'ordenescompra_payloaders.pdf', 'uses' => 'OrdenesCompraPayloaderController@getPdf'
 ]);
 
-Route::get('ordenescompra_payloader.edit.{id}', [
-	'as' => 'ordenescompra_payloader.edit', 'uses' => 'OrdenesCompraPayloaderController@edit'
+Route::get('ordenescompra_payloaders.edit.{id}', [
+	'as' => 'ordenescompra_payloaders.edit', 'uses' => 'OrdenesCompraPayloaderController@edit'
 ]);
 
-Route::put('ordenescompra_payloader.update.{id}', [
-	'as' => 'ordenescompra_payloader.update', 'uses' => 'OrdenesCompraPayloaderController@update'
+Route::put('ordenescompra_payloaders.update.{id}', [
+	'as' => 'ordenescompra_payloaders.update', 'uses' => 'OrdenesCompraPayloaderController@update'
 ]);

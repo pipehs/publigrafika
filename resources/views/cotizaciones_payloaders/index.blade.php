@@ -27,7 +27,7 @@
       <th>Cliente</th>
   		<th>Cantidad</th>
       <th>Valor cotizaci&oacute;n</th>
-      <th>Glosa</th>
+      <th>Comentarios</th>
       <th>PDF Cotizaci&oacute;n</th>
       <th>Acción</th>
   	</thead>

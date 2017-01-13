@@ -37,8 +37,8 @@
 					<li><a href="cotizaciones_payloaders" id="dropdown_ususarios" title="Cotizaciones">Cotizaciones Payloaders</a></li>
 
                     <!--<li><a href="#" id="dropdown_ususarios" title="Buscar Cotizaciones">Buscar Cotizaciones</a></li>-->
-                    <li><a href="ordenescompra_corrugado" id="dropdown_ususarios" title="Cotizaciones">&Oacute;rdenes de compra Corrugado</a></li>
-					<li><a href="ordenescompra_payloaders" id="dropdown_ususarios" title="Cotizaciones">&Oacute;rdenes de compra Payloaders</a></li>
+                    <li><a href="ordenescompra_corrugado" id="dropdown_ususarios" title="Ordenes de compra">&Oacute;rdenes de compra Corrugado</a></li>
+					<li><a href="ordenescompra_payloaders" id="dropdown_ususarios" title="Ordenes de compra">&Oacute;rdenes de compra Payloaders</a></li>
 
                     <!--<li><a href="#" id="dropdown_ususarios" title="Órdenes de Producción">Órdenes de Producción</a></li>-->
 					

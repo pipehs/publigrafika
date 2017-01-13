@@ -7,7 +7,7 @@ class OrdenesCompraCorrugado extends Model {
 
 	protected $table = 'pubordenescompra_corrugado';
 
-	protected $fillable = ['cotizacion_id','cliente_id','cantidad_id','corrugado_id','glosa','vendedor_id','usuario_id','forma_pago_id','estado','fecha_entrega'];
+	protected $fillable = ['cotizacion_id','cliente_id','cantidad','precio','corrugado_id','glosa','vendedor_id','usuario_id','forma_pago_id','estado','fecha_entrega','comentarios'];
 
 	public static function getOrdenes($id)
 	{

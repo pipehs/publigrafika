@@ -80,4 +80,13 @@ class CotizacionesPayloader extends Model {
 			->where('cotizacionespayloader_id','=',$id)
 			->delete();
 	}
+
+	public static function getCotizacionesSinOrden()
+	{
+		return DB::table('pubcotizacionespayloader')
+				->leftJoin('pubordenescompra_payloader','pubordenescompra_payloader.cotizacion_id','=','pubcotizacionespayloader.id')
+				->where('pubordenescompra_payloader.cotizacion_id','=',NULL)
+				->select('pubcotizacionespayloader.*')
+				->get();
+	}
 }
